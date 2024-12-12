@@ -1,76 +1,25 @@
-#Função para registar novos pedidos 
-def registar_pedido(pedidos):
-    id_pedido = len(pedidos) + 1
-    descricao = input("Descrição do problema: ")
-    estado = "Pendente"
-    pedidos[id_pedido] = {"descricao": descricao, "estado": estado}
-    print(f"Pedido #{id_pedido} registado com sucesso!")
-  #Função para consultar o estado de um pedido  
-def consultar_pedido(pedidos):
-    id_pedido = int(input("ID do pedido a consultar: "))
-    if id_pedido in pedidos:
-        pedido = pedidos[id_pedido]
-        print(f"Pedido #{id_pedido} - Descrição: {pedido['descricao']}, Estado: {pedido['estado']}")
-    else:
-        print("Pedido não encontrado.")
+<h1> Loja de reparações </h1>
 
-#Função para atualizar o estado de um pedido
-def atualizar_estado(pedidos):
-    id_pedido = int(input("ID do pedido a atualizar: "))
-    if id_pedido in pedidos:
-        novo_estado = input("Novo estado (Pendente/Em Andamento/Concluído): ")
-        if novo_estado in ["Pendente", "Em Andamento", "Concluído"]:
-            pedidos[id_pedido]["estado"] = novo_estado
-            print(f"Estado do pedido #{id_pedido} atualizado para '{novo_estado}'.")
-        else:
-            print("Estado inválido.")
-    else:
-        print("Pedido não encontrado.")
+A função registar_pedido(pedidos) serve para adicionar um novo pedido a um sistema. Ela gera um identificador único (ID), solicita ao utilizador a descrição do problema, define o estado como "Pendente" e regista os dados num dicionário pedidos. Após o registo, a função imprime uma mensagem de confirmação.
+O Objetivo:Adicionar um novo pedido com descrição e estado "Pendente".
+Entrada: A descrição do problema é pedida ao utilizador.
+Saída: O pedido é registado num dicionário com um ID único, e uma mensagem é exibida confirmando o registo.
 
-    #Função para exibir todos os pedidos
-def exibir_pedidos(pedidos):
-    print("\nLista de Pedidos:")
-    print("ID\tDescrição\t\tEstado")
-    print("-" * 40)
-    for id_pedido, info in pedidos.items():
-        print(f"{id_pedido}\t{info['descricao'][:15]}\t\t{info['estado']}")
+A função consultar_pedido(pedidos) permite ao utilizador consultar um pedido específico, fornecendo o ID. Se o pedido existir, a função exibe a descrição e o estado do pedido. Caso contrário, informa que o pedido não foi encontrado. A função também trata erros caso o ID inserido não seja um número válido.
 
-#Função para eliminar  todos os pedidos 
-def eliminar_pedido(pedidos):
-    ID_pedido = int(input("ID do pedido a eliminar"))
-    if ID_pedido in pedidos:
-        pedidos.pop (ID_pedido)
-        print("pedido eliminado")
+A função atualizar_estado(pedidos) permite ao utilizador atualizar o estado de um pedido, fornecendo o ID do pedido e o novo estado (como "Pendente", "Em Andamento" ou "Concluído"). Se o pedido e o estado forem válidos, o estado do pedido é atualizado. Caso contrário, são mostradas mensagens de erro se o ID não existir ou o estado for inválido.
 
-#Função principal para gerir o menu
-def main():
-    pedidos = {}
-    while True:
-        print("\nSistema de Gestão de Pedidos - Manutenção")
-        print("1. Registar Pedido")
-        print("2. Consultar Pedido")
-        print("3. Atualizar Estado")
-        print("4. Exibir Todos os Pedidos")
-        print("5. Eliminar o pedido")
-        print("6. Sair")
-        opcao = input("Escolha uma opção: ")
+A função serve para mostrar todos os pedidos registados, mostrando o ID, a descrição (com um limite de 15 caracteres) e o estado de cada pedido.
 
-        if opcao == "1":
-            registar_pedido(pedidos)
-        elif opcao == "2":
-            consultar_pedido(pedidos)
-        elif opcao == "3":
-            atualizar_estado(pedidos)
-        elif opcao == "4":
-            exibir_pedidos(pedidos)
-        elif opcao == "5":
-            eliminar_pedido(pedidos)
-        elif opcao == "6":
-            print("Encerrando o sistema...")
-            break
-        else:
-            print("Opção inválida! Tente novamente.")
+A função eliminar_pedido(pedidos) serve para remover um pedido do sistema, com base no ID que o utilizador fornece. Quando o utilizador insere o ID do pedido, a função verifica se ele existe e, em caso afirmativo, elimina o pedido e mostra uma mensagem a confirmar a eliminação.
 
-if __name__ == "__main__":
-    main()
+A função main() é o centro de controlo do sistema de gestão de pedidos. Ela exibe um menu com opções para o utilizador registar, consultar, atualizar, exibir ou eliminar pedidos, e continua a funcionar até que o utilizador escolha sair do sistema.
+
+
+
+
+
+
+
+
 
